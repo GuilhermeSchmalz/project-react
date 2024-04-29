@@ -1,0 +1,39 @@
+div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: rgba(36, 36, 36, 0.3);
+    max-width: 1500px;
+    height: 1000px
+}
+
+.headline-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.headline-container > i {
+    font-size: 36px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.headline-container > h1 {
+    font-size: 36px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.text-container > p{
+    font-size: 14px;
+    color: #fff;
+    padding: 5px;
+}
