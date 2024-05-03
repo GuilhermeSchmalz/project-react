@@ -2,7 +2,12 @@ import './style.css'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const navbar_options = {home: 'Mapcife', about: 'Sobre', items: 'Itens', login: 'Login'}
+const navbar_options = [
+  {path: 'map', name: 'Mapa'},
+  {path: 'about', name: 'Sobre'},
+  {path: 'place-registry', name: 'Items'},
+  {path: 'places', name: 'Locais'}
+]
 
 function NavBar() {
   const [click, setClick] = useState(false);
@@ -11,7 +16,7 @@ function NavBar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(!false);
 
-  const showButton = () => {
+  function showButton() {
     if (window.innerWidth <= 960) {
       setButton(false)
     } else {
@@ -34,30 +39,18 @@ function NavBar() {
           </div>
           <div className = 'navbar-title'>
             <Link to = '/' className = 'navbar-logo' onClick = {closeMobileMenu}>
-              {navbar_options.home} <i className = 'fa-solid fa-map'/>
+              Mapcife <i className = 'fa-solid fa-map'/>
             </Link>
           </div>
           <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
-            <li className = 'nav-item'>
-              <Link to = '/' className = 'nav-links' onClick = {closeMobileMenu}>
-                {navbar_options.home}
-              </Link>
-            </li>
-            <li className = 'nav-item'>
-              <Link to = '/about' className = 'nav-links' onClick = {closeMobileMenu}>
-                {navbar_options.about}
-              </Link>
-            </li>
-            <li className = 'nav-item'>
-              <Link to = '/items' className = 'nav-links' onClick = {closeMobileMenu}>
-                {navbar_options.items}
-              </Link>
-            </li>
-            <li className = 'nav-item'>
-              <Link to = '/login' className = 'nav-links' onClick = {closeMobileMenu}>
-                {navbar_options.login}
-              </Link>
-            </li>
+            {navbar_options.map((item) => {
+              return (
+                <li className = 'nav-item'>
+                  <Link to = {item.path} className = 'nav-links' onClick = {closeMobileMenu}>
+                    {item.name}
+                  </Link>
+                </li>
+              );})}
           </ul>
         </div>        
     </nav>
